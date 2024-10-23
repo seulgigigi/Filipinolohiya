@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family:'Arial Narrow Bold', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.container {
+    text-align: center;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+input[type="text"], button {
+    padding: 0.5rem;
+    font-size: 1rem;
+    margin-top: 1rem;
+    width: 100%;
+    max-width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+#result {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+}
+
+.hidden {
+    display: none;
+}
+
+#startGame {
+    margin-bottom: 1rem;
+}
+
+#definition{
+    font-family: 'Arial Narrow Bold', sans-serif;
+    font-size: 2em;
+    margin-bottom: 1rem;
+}
+#scrambledWord{
+    font-family: 'Arial Narrow Bold', sans-serif;
+    font-weight: bold;
+    font-size: 2em;
+}
+#result{
+    font-family: 'Arial Narrow Bold', sans-serif;
+    font-size: 2em;
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    input[type="text"], button {
+        font-size: 0.9rem;
+    }
+}
