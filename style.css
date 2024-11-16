@@ -1,86 +1,176 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* General body and container */
 
 body {
-    font-family:'Arial Narrow Bold', sans-serif;
+    font-family: Verdana;
+    font-size: 1.4em;
+    background-color: #121213; /* Dark background */
+    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f0f0f0;
+    margin: 0;
+}
+
+li {
+    text-transform: uppercase;
 }
 
 .container {
+    width: 90%; /* Scales on smaller screens */
+    max-width: 500px; /* Caps size on larger screens */
+    padding: 20px;
+    background-color: #202124; /* Slightly lighter background */
+    border-radius: 10px;
     text-align: center;
-    background-color: #fff;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
 }
 
-h1 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-
-input[type="text"], button {
-    padding: 0.5rem;
-    font-size: 1rem;
-    margin-top: 1rem;
-    width: 100%;
-    max-width: 300px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
+/* Buttons */
 button {
-    background-color: #28a745;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #538d4e;
     color: white;
+    border: none;
     cursor: pointer;
+    border-radius: 5px;
+    margin: 10px;
     transition: background-color 0.3s;
 }
 
 button:hover {
-    background-color: #218838;
+    background-color: #6aaa64;
 }
 
-#result {
-    margin-top: 1rem;
-    font-size: 1.2rem;
+button:disabled {
+    background-color: #3a3a3c;
+    cursor: not-allowed;
 }
 
+/* Hidden Elements */
 .hidden {
     display: none;
 }
 
-#startGame {
-    margin-bottom: 1rem;
-}
-
-#definition{
-    font-family: 'Arial Narrow Bold', sans-serif;
+/* Word Grid */
+#scrambledWord {
     font-size: 2em;
-    margin-bottom: 1rem;
-}
-#scrambledWord{
-    font-family: 'Arial Narrow Bold', sans-serif;
     font-weight: bold;
-    font-size: 2em;
-}
-#result{
-    font-family: 'Arial Narrow Bold', sans-serif;
-    font-size: 2em;
+    background-color: #3a3a3c;
+    border-radius: 10px;
+    margin: 20px 0;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
 }
 
-@media (max-width: 600px) {
-    h1 {
-        font-size: 1.5rem;
+/* Input */
+input[type="text"] {
+    font-size: 18px;
+    text-align: center;
+    padding: 10px;
+    width: 70%; /* Scales based on screen size */
+    margin-bottom: 20px;
+    border: 2px solid #3a3a3c;
+    border-radius: 5px;
+    background-color: #121213;
+    color: white;
+    text-transform: uppercase;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: #6aaa64;
+}
+
+/* Guess Grid */
+.guess-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Five letter boxes per row */
+    gap: 10px;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.letter-box {
+    width: 50px; /* Adjust for scaling */
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    border: 2px solid #3a3a3c;
+    border-radius: 5px;
+    background-color: #121213; /* Default dark background */
+    color: white;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.letter-box.correct {
+    background-color: #6aaa64; /* Green for correct letter */
+}
+
+.letter-box.wrong-position {
+    background-color: #c9b458; /* Yellow for misplaced letter */
+}
+
+.letter-box.wrong {
+    background-color: #3a3a3c; /* Gray for wrong letter */
+}
+
+/* Result */
+#result {
+    margin-top: 20px;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+/* Instructions */
+.instructions {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 400px;
+    background-color: rgba(34, 30, 30, 0.8); /* Semi-transparent black */
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    display: none;
+}
+
+/* Toggle Button */
+.toggle-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #538d4e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.toggle-button:hover {
+    background-color: #6aaa64;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .letter-box {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
     }
 
-    input[type="text"], button {
-        font-size: 0.9rem;
+    input[type="text"] {
+        width: 90%;
     }
 }

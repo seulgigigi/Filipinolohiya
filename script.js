@@ -3,10 +3,12 @@ let currentWord = '';
 let currentDefinition = '';
 let scrambledWord = '';
 let attempts = 0;
-const maxAttempts = 6; // Maximum number of attempts
+let currentRound = 0;
+const maxRounds = 20; // Maximum rounds (20 words)
 
 document.getElementById('startGame').addEventListener('click', startGame);
 document.getElementById('submitGuess').addEventListener('click', checkGuess);
+document.getElementById('nextWord').addEventListener('click', nextRound);
 
 // Fetch the CSV from an external source when the page loads
 window.onload = function() {
@@ -33,10 +35,26 @@ function startGame() {
         alert('Words are not loaded yet. Please try again later.');
         return;
     }
+    document.getElementById('startGame').style.display = 'none'; // Hide the start button
+    document.getElementById('nextWord').style.display = 'inline-block'; // Show the next button
+    currentRound = 0; // Reset rounds
+    nextRound(); // Start the first round
+}
+
+function nextRound() {
+    if (currentRound >= maxRounds) {
+        alert('Game over! You have completed all rounds.');
+        document.getElementById('game').classList.add('hidden');
+        return;
+    }
+
+    currentRound++;
+
+    // Pick a random word from the list
     const randomIndex = Math.floor(Math.random() * words.length);
     currentWord = words[randomIndex].word.toLowerCase();
     currentDefinition = words[randomIndex].definition;
-    
+
     scrambledWord = scrambleWord(currentWord);
     
     document.getElementById('scrambledWord').innerText = scrambledWord;
@@ -45,8 +63,12 @@ function startGame() {
     document.getElementById('result').innerText = '';
     document.getElementById('userGuess').value = '';
     
-    attempts = 0; // Reset attempts
+    // Dynamically set maxlength for the input field
+    document.getElementById('userGuess').setAttribute('maxlength', currentWord.length);
+
+    attempts = 0; // Reset attempts for each round
 }
+
 
 function scrambleWord(word) {
     const arr = word.split('');
@@ -64,18 +86,20 @@ function checkGuess() {
         alert(`Please guess a ${currentWord.length}-letter word!`);
         return;
     }
-    
+
     attempts++;
     
     if (userGuess === currentWord) {
         document.getElementById('result').innerText = 'Correct! 🎉';
         displayResult(userGuess, true);
+        document.getElementById('submitGuess').disabled = true; // Disable further guessing for this round
         return;
     }
 
-    if (attempts >= maxAttempts) {
+    if (attempts >= 5) {
         document.getElementById('result').innerText = `Game over! The word was: ${currentWord}`;
         displayResult(currentWord, false);
+        document.getElementById('submitGuess').disabled = true; // Disable further guessing for this round
         return;
     }
 
@@ -87,63 +111,66 @@ function displayResult(guess, isCorrect) {
     const guessRow = document.createElement('div');
     guessRow.className = 'guess-row';
 
-    // Check letters and change colors
-    let letterStatus = new Array(currentWord.length).fill('wrong'); // Default all letters to 'wrong'
+    let letterStatus = new Array(currentWord.length).fill('wrong');
     const currentWordArr = currentWord.split('');
     
-    // First pass: check for correct letters
     guess.split('').forEach((letter, index) => {
         if (letter === currentWordArr[index]) {
-            letterStatus[index] = 'correct'; // Exact match
+            letterStatus[index] = 'correct';
         }
     });
 
-    // Second pass: check for wrong position letters
     guess.split('').forEach((letter, index) => {
         if (letterStatus[index] !== 'correct' && currentWordArr.includes(letter)) {
-            letterStatus[index] = 'wrong-position'; // Letter is in the word but in the wrong position
+            letterStatus[index] = 'wrong-position';
         }
     });
 
-    // Create colored boxes for the guess
     guess.split('').forEach((letter, index) => {
         const letterBox = document.createElement('span');
-        letterBox.className = `letter-box ${letterStatus[index]}`; // Add the corresponding class
+        letterBox.className = `letter-box ${letterStatus[index]}`;
         letterBox.innerText = letter.toUpperCase();
         guessRow.appendChild(letterBox);
     });
 
     resultDiv.appendChild(guessRow);
-    document.getElementById('userGuess').value = ''; // Clear input
+    document.getElementById('userGuess').value = '';
 }
 
-// CSS for letter boxes and colors
-const style = document.createElement('style');
-style.innerHTML = `
-    .guess-row {
-        display: flex;
-        margin: 5px 0;
+function showInstructions() {
+    document.getElementById('instructions').classList.remove('hidden');
+}
+
+function startGame() {
+    if (words.length === 0) {
+        alert('Words are not loaded yet. Please try again later.');
+        return;
     }
-    .letter-box {
-        width: 30px;
-        height: 30px;
-        margin: 0 5px;
-        text-align: center;
-        line-height: 30px;
-        border: 2px solid #ccc;
-        font-weight: bold;
+    document.getElementById('startGame').style.display = 'none'; // Hide the start button
+    document.getElementById('nextWord').style.display = 'inline-block'; // Show the next button
+    showInstructions(); // Show instructions when the game starts
+    setTimeout(() => {
+        hideInstructions(); // Hide instructions after 5 seconds
+        currentRound = 0; // Reset rounds
+        nextRound(); // Start the first round
+    }, 5000); // Hide instructions after 5 seconds
+}
+
+document.getElementById('toggleInstructions').addEventListener('click', toggleInstructions);
+
+function toggleInstructions() {
+    const instructions = document.getElementById('instructions');
+    const button = document.getElementById('toggleInstructions');
+
+    if (instructions.style.display === 'block' || !instructions.classList.contains('hidden')) {
+        instructions.style.display = 'none'; // Hide instructions
+        instructions.classList.add('hidden');
+        button.innerText = 'Ipakita ang Mga Panuto'; // Update button text
+    } else {
+        instructions.style.display = 'block'; // Show instructions
+        instructions.classList.remove('hidden');
+        button.innerText = 'Itago ang Mga Panuto'; // Update button text
     }
-    .correct {
-        background-color: #6aaa64; /* Green */
-        color: white;
-    }
-    .wrong-position {
-        background-color: #f3c94c; /* Yellow */
-        color: black;
-    }
-    .wrong {
-        background-color: #787c7e; /* Gray */
-        color: white;
-    }
-`;
+}
+
 document.head.appendChild(style);
