@@ -81,65 +81,64 @@ function scrambleWord(word) {
 
 function checkGuess() {
     const userGuess = document.getElementById('userGuess').value.trim().toLowerCase();
-    
+
     if (userGuess.length !== currentWord.length) {
         alert(`Please guess a ${currentWord.length}-letter word!`);
         return;
     }
 
     attempts++;
-    
-    if (userGuess === currentWord) {
-        document.getElementById('result').innerText = 'Correct! 🎉';
-        displayResult(userGuess, true);
-        document.getElementById('submitGuess').disabled = true; // Disable further guessing for this round
-        return;
-    }
 
-    if (attempts >= 5) {
-        document.getElementById('result').innerText = `Game over! The word was: ${currentWord}`;
-        displayResult(currentWord, false);
-        document.getElementById('submitGuess').disabled = true; // Disable further guessing for this round
-        return;
-    }
-
-    displayResult(userGuess, false);
-}
-
-function displayResult(guess, isCorrect) {
+    // Clear and rebuild the guess display for the current attempt
     const resultDiv = document.getElementById('result');
+    resultDiv.innerHTML = ''; // Clear previous guess row
     const guessRow = document.createElement('div');
     guessRow.className = 'guess-row';
 
     let letterStatus = new Array(currentWord.length).fill('wrong');
     const currentWordArr = currentWord.split('');
-    
-    guess.split('').forEach((letter, index) => {
+
+    // Determine letter status
+    userGuess.split('').forEach((letter, index) => {
         if (letter === currentWordArr[index]) {
             letterStatus[index] = 'correct';
         }
     });
 
-    guess.split('').forEach((letter, index) => {
+    userGuess.split('').forEach((letter, index) => {
         if (letterStatus[index] !== 'correct' && currentWordArr.includes(letter)) {
             letterStatus[index] = 'wrong-position';
         }
     });
 
-    guess.split('').forEach((letter, index) => {
+    // Build the row with animated letter boxes
+    userGuess.split('').forEach((letter, index) => {
         const letterBox = document.createElement('span');
         letterBox.className = `letter-box ${letterStatus[index]}`;
         letterBox.innerText = letter.toUpperCase();
         guessRow.appendChild(letterBox);
+
+        // Add animation for each letter
+        setTimeout(() => {
+            letterBox.classList.add('flip-in');
+        }, index * 100); // Stagger animations slightly
     });
 
     resultDiv.appendChild(guessRow);
+
+    if (userGuess === currentWord) {
+        document.getElementById('result').innerText = 'Correct! 🎉';
+        return;
+    }
+
+    if (attempts >= 5) {
+        document.getElementById('result').innerHTML = `Game over! The word was: ${currentWord.toUpperCase().split('').join(' ')}`;
+        return;
+    }
+
     document.getElementById('userGuess').value = '';
 }
 
-function showInstructions() {
-    document.getElementById('instructions').classList.remove('hidden');
-}
 
 function startGame() {
     if (words.length === 0) {

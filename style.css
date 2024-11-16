@@ -1,7 +1,17 @@
 /* General body and container */
+/* Game Title */
+.game-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2em;
+    color: white;
+    font-weight: 700;   
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
 
 body {
-    font-family: Verdana;
+    font-family: Verdana, sans-serif;
     font-size: 1.4em;
     background-color: #121213; /* Dark background */
     color: white;
@@ -18,24 +28,24 @@ li {
 
 .container {
     width: 90%; /* Scales on smaller screens */
-    max-width: 500px; /* Caps size on larger screens */
-    padding: 20px;
+    max-width: 31.25em; /* Caps size on larger screens (500px / 16) */
+    padding: 1.25em; /* 20px */
     background-color: #202124; /* Slightly lighter background */
-    border-radius: 10px;
+    border-radius: 0.625em; /* 10px */
     text-align: center;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 1.25em rgba(0, 0, 0, 0.5); /* 20px */
 }
 
 /* Buttons */
 button {
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 0.625em 1.25em; /* 10px 20px */
+    font-size: 1em; /* 16px */
     background-color: #538d4e;
     color: white;
     border: none;
     cursor: pointer;
-    border-radius: 5px;
-    margin: 10px;
+    border-radius: 0.3125em; /* 5px */
+    margin: 0.625em; /* 10px */
     transition: background-color 0.3s;
 }
 
@@ -55,24 +65,24 @@ button:disabled {
 
 /* Word Grid */
 #scrambledWord {
-    font-size: 2em;
+    font-size: 2em; /* Adjusted for responsiveness */
     font-weight: bold;
     background-color: #3a3a3c;
-    border-radius: 10px;
-    margin: 20px 0;
-    letter-spacing: 0.5em;
+    border-radius: 0.625em; /* 10px */
+    margin: 1.25em 0; /* 20px */
+    letter-spacing: 0.3em; /* Adjusted for better spacing */
     text-transform: uppercase;
 }
 
 /* Input */
 input[type="text"] {
-    font-size: 18px;
+    font-size: 1.125em; /* 18px */
     text-align: center;
-    padding: 10px;
-    width: 70%; /* Scales based on screen size */
-    margin-bottom: 20px;
-    border: 2px solid #3a3a3c;
-    border-radius: 5px;
+    padding: 0.625em; /* 10px */
+    width: 80%; /* Improved scaling */
+    margin-bottom: 1.25em; /* 20px */
+    border: 0.125em solid #3a3a3c; /* 2px */
+    border-radius: 0.3125em; /* 5px */
     background-color: #121213;
     color: white;
     text-transform: uppercase;
@@ -86,21 +96,21 @@ input[type="text"]:focus {
 /* Guess Grid */
 .guess-row {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* Five letter boxes per row */
-    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(3em, 1fr)); /* Flexible grid for responsiveness */
+    gap: 0.625em; /* 10px */
     justify-content: center;
-    margin: 10px 0;
+    margin: 0.625em 0; /* 10px */
 }
 
 .letter-box {
-    width: 50px; /* Adjust for scaling */
-    height: 50px;
+    width: 3.125em; /* 50px */
+    height: 3.125em; /* 50px */
     text-align: center;
-    line-height: 50px;
-    font-size: 20px;
+    line-height: 3.125em; /* 50px */
+    font-size: 1.25em; /* 20px */
     font-weight: bold;
-    border: 2px solid #3a3a3c;
-    border-radius: 5px;
+    border: 0.125em solid #3a3a3c; /* 2px */
+    border-radius: 0.3125em; /* 5px */
     background-color: #121213; /* Default dark background */
     color: white;
     transition: background-color 0.3s, transform 0.2s;
@@ -120,8 +130,8 @@ input[type="text"]:focus {
 
 /* Result */
 #result {
-    margin-top: 20px;
-    font-size: 1rem;
+    margin-top: 1.25em; /* 20px */
+    font-size: 1em;
     font-weight: bold;
 }
 
@@ -132,13 +142,13 @@ input[type="text"]:focus {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 80%;
-    max-width: 400px;
+    max-width: 25em; /* 400px */
     background-color: rgba(34, 30, 30, 0.8); /* Semi-transparent black */
     color: white;
-    padding: 20px;
-    border-radius: 10px;
+    padding: 1.25em; /* 20px */
+    border-radius: 0.625em; /* 10px */
     text-align: center;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0.9375em rgba(0, 0, 0, 0.5); /* 15px */
     z-index: 1000;
     display: none;
 }
@@ -146,14 +156,14 @@ input[type="text"]:focus {
 /* Toggle Button */
 .toggle-button {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    padding: 10px 20px;
+    bottom: 1.25em; /* 20px */
+    right: 1.25em; /* 20px */
+    padding: 0.625em 1.25em; /* 10px 20px */
     background-color: #538d4e;
     color: white;
     border: none;
-    border-radius: 5px;
-    font-size: 14px;
+    border-radius: 0.3125em; /* 5px */
+    font-size: 0.875em; /* 14px */
     cursor: pointer;
     z-index: 1001;
 }
@@ -163,14 +173,51 @@ input[type="text"]:focus {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 667px) {
     .letter-box {
-        width: 40px;
-        height: 40px;
-        font-size: 16px;
+        width: 2.5em; /* 40px */
+        height: 2.5em; /* 40px */
+        font-size: 1em; /* Adjusted for smaller screens */
     }
 
     input[type="text"] {
         width: 90%;
+        font-size: 1em; /* Adjusted for readability */
     }
+
+    .container {
+        padding: 1em; /* Reduced padding for smaller screens */
+    }
+}
+
+@media (max-width: 375px) { /* iPhone SE and similar */
+    .letter-box {
+        width: 2em; /* 32px */
+        height: 2em; /* 32px */
+        font-size: 0.875em; /* Smaller font */
+    }
+
+    input[type="text"] {
+        width: 100%;
+    }
+}
+@keyframes flip-in {
+    0% {
+        transform: rotateX(90deg);
+        background-color: transparent;
+        color: transparent;
+    }
+    50% {
+        background-color: #121213; /* Dark background during flip */
+    }
+    100% {
+        transform: rotateX(0deg);
+        background-color: inherit; /* Reset to final state */
+        color: inherit;
+    }
+}
+
+/* Apply animation class */
+.flip-in {
+    animation: flip-in 0.6s ease-in-out;
 }
