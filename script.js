@@ -164,11 +164,11 @@ function toggleInstructions() {
     if (instructions.style.display === 'block' || !instructions.classList.contains('hidden')) {
         instructions.style.display = 'none'; // Hide instructions
         instructions.classList.add('hidden');
-        button.innerText = 'Ipakita ang Mga Panuto'; // Update button text
+        button.innerText = '?'; // Update button text
     } else {
         instructions.style.display = 'block'; // Show instructions
         instructions.classList.remove('hidden');
-        button.innerText = 'Itago ang Mga Panuto'; // Update button text
+        button.innerText = '?'; // Update button text
     }
 }
 

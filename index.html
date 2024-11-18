@@ -6,7 +6,7 @@
     <title>Word Scramble Game</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="icon" href="C:\VsCode\wordscramble\icon.png">
+    <link rel="icon" href="icon.png">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <style>
@@ -16,9 +16,8 @@
 <body>
     <div class="container">
         <h2 class="game-title">Word Scramble</h2>   
-        <button id="toggleInstructions" class="toggle-button">Panuto</button>
+        <button id="toggleInstructions" class="toggle-button">?</button>
         <button id="startGame">Start Game</button>
-        <button id="nextWord" style="display: none;">Next Word</button>
         <div id="game" class="hidden">
             <p id="definition"></p> 
             <p id="scrambledWord"></p>
@@ -31,10 +30,11 @@
             <p>Ayusin ang mga letra para mabuo ang tamang salita.</p>
             <ul>
                 <li><span style="color: gray;">Grey</span>: Walang letra sa tamang posisyon.</li>
-                <li><span style="color: yellow;">Yellow</span>: Leetra nasa salita ngunit nasa maling pwesto.</li>
-                <li><span style="color: green;">Green</span>: Leetra tama at nasa tamang pwesto.</li>
+                <li><span style="color: yellow;">Yellow</span>: Letra ay nasa salita ngunit nasa maling pwesto.</li>
+                <li><span style="color: green;">Green</span>: Letra ay tama at nasa tamang pwesto.</li>
             </ul>
         </div>
+        <button id="nextWord" style="display: none;">Next Word</button>
     </div>
     
     <script src="script.js"></script>

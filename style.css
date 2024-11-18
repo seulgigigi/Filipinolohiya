@@ -2,6 +2,7 @@
 /* Game Title */
 .game-title {
     font-family: 'Poppins', sans-serif;
+    margin-bottom: .5em;
     font-size: 2em;
     color: white;
     font-weight: 700;   
@@ -10,6 +11,10 @@
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
+#nextWord{
+    margin-top: -1em;
+    margin-bottom: 1em;
+}
 body {
     font-family: Verdana, sans-serif;
     font-size: 1.4em;
@@ -34,6 +39,12 @@ li {
     border-radius: 0.625em; /* 10px */
     text-align: center;
     box-shadow: 0 0 1.25em rgba(0, 0, 0, 0.5); /* 20px */
+}
+
+#definition{
+    background-color: #3a3a3c;
+    border-radius: 0.625em; /* 10px */
+    font-size: 1.5;
 }
 
 /* Buttons */
@@ -69,7 +80,6 @@ button:disabled {
     font-weight: bold;
     background-color: #3a3a3c;
     border-radius: 0.625em; /* 10px */
-    margin: 1.25em 0; /* 20px */
     letter-spacing: 0.3em; /* Adjusted for better spacing */
     text-transform: uppercase;
 }
@@ -103,6 +113,7 @@ input[type="text"]:focus {
 }
 
 .letter-box {
+    margin-bottom: 1em;
     width: 3.125em; /* 50px */
     height: 3.125em; /* 50px */
     text-align: center;
@@ -131,6 +142,7 @@ input[type="text"]:focus {
 /* Result */
 #result {
     margin-top: 1.25em; /* 20px */
+    margin-bottom: 2em;
     font-size: 1em;
     font-weight: bold;
 }
@@ -140,6 +152,7 @@ input[type="text"]:focus {
     position: fixed;
     top: 50%;
     left: 50%;
+    text-transform: uppercase;
     transform: translate(-50%, -50%);
     width: 80%;
     max-width: 25em; /* 400px */
@@ -156,8 +169,8 @@ input[type="text"]:focus {
 /* Toggle Button */
 .toggle-button {
     position: fixed;
-    bottom: 1.25em; /* 20px */
-    right: 1.25em; /* 20px */
+    top: 1.25em; /* 20px */
+    right: -.5em; /* 20px */
     padding: 0.625em 1.25em; /* 10px 20px */
     background-color: #538d4e;
     color: white;
@@ -173,34 +186,73 @@ input[type="text"]:focus {
 }
 
 /* Responsive Design */
-@media (max-width: 667px) {
+@media (max-width: 896px) {
     .letter-box {
-        width: 2.5em; /* 40px */
-        height: 2.5em; /* 40px */
-        font-size: 1em; /* Adjusted for smaller screens */
+        width: 2.5em;
+        height: 2.5em;
+        line-height: 2.5em;
+        font-size: 2.5em;
+        gap: -2em;
     }
-
-    input[type="text"] {
+    
+    .instructions{
+        position: fixed;
+        top: 50%;
+        left: 50%;
         width: 90%;
-        font-size: 1em; /* Adjusted for readability */
+        max-width: 30em;
     }
 
+    .guess-row {
+        size-adjust: 120%;
+        display: inline-flex;
+        justify-content: center;
+        gap: -3em;
+        grid-template-columns: repeat(auto-fit, minmax(3em, 1fr)); /* Flexible grid for responsiveness */
+        gap: 0.625em; /* 10px */
+        justify-content: center;
+        margin: 0.625em 0; /* 10px */
+    }
+}
+
+@media (max-width: 667px) {
     .container {
-        padding: 1em; /* Reduced padding for smaller screens */
+        padding: 1em; /* Slightly smaller padding */
+        width: 95%; /* Leave a small margin for better spacing */
     }
-}
 
-@media (max-width: 375px) { /* iPhone SE and similar */
+    button {
+        font-size: 0.8em; /* Smaller text for buttons */
+        padding: 0.4em 0.8em; /* Smaller padding */
+    }
+
+    #scrambledWord {
+        font-size: 1.3em; /* Further reduce font size */
+        letter-spacing: 0.2em; /* Adjust spacing */
+    }
+
+    .guess-row {
+        gap: 0.4em; /* Reduce gap */
+    }
+
     .letter-box {
-        width: 2em; /* 32px */
-        height: 2em; /* 32px */
-        font-size: 0.875em; /* Smaller font */
+        width: 2.3em;
+        height: 2.3em;
+        line-height: 2.3em;
+        font-size: 0.9em;
     }
 
-    input[type="text"] {
-        width: 100%;
+    .instructions {
+        font-size: 0.8em; /* Further reduce font size */
+        padding: 0.8em; /* Smaller padding */
+    }
+
+    .toggle-button {
+        font-size: 0.75em; /* Smaller button font size */
+        padding: 0.4em 0.8em; /* Reduce padding */
     }
 }
+
 @keyframes flip-in {
     0% {
         transform: rotateX(90deg);
