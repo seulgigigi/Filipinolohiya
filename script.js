@@ -69,6 +69,17 @@ function nextRound() {
     attempts = 0; // Reset attempts for each round
 }
 
+// Attach an event listener to the input field
+document.getElementById('userGuess').addEventListener('keydown', function (event) {
+    // Check if the Enter key is pressed
+    if (event.key === 'Enter') {
+        // Prevent default form submission behavior (if any)
+        event.preventDefault();
+
+        // Trigger the submit button's click event
+        document.getElementById('submitGuess').click();
+    }
+});
 
 function scrambleWord(word) {
     const arr = word.split('');
@@ -132,9 +143,9 @@ function checkGuess() {
     }
 
     if (attempts >= 5) {
-        document.getElementById('result').innerHTML = `Game over! The word was: ${currentWord.toUpperCase().split('').join(' ')}`;
+        document.getElementById('result').innerHTML = `Game over! The word was:<br><span>${currentWord.toUpperCase()}</span>`;
         return;
-    }
+    }    
 
     document.getElementById('userGuess').value = '';
 }

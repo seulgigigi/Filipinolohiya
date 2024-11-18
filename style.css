@@ -147,6 +147,12 @@ input[type="text"]:focus {
     font-weight: bold;
 }
 
+#result span {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #6aaa64; /* Example: Green color */
+}
+
 /* Instructions */
 .instructions {
     position: fixed;
@@ -213,6 +219,14 @@ input[type="text"]:focus {
         justify-content: center;
         margin: 0.625em 0; /* 10px */
     }
+
+    #result {
+        margin-top: 1em; /* 20px */
+        margin-bottom: 2em;
+        font-size: .8em;
+        font-weight: bold;
+    }
+    
 }
 
 @media (max-width: 667px) {
