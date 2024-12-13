@@ -1,4 +1,26 @@
 /* General body and container */
+body {
+    font-family: Verdana, sans-serif;
+    font-size: 1.4em;
+    background-color: #121213; /* Dark background */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    width: 90%; /* Scales on smaller screens */
+    max-width: 31.25em; /* Caps size on larger screens (500px / 16) */
+    padding: 1.25em; /* 20px */
+    background-color: #202124; /* Slightly lighter background */
+    border-radius: 0.625em; /* 10px */
+    text-align: center;
+    box-shadow: 0 0 1.25em rgba(0, 0, 0, 0.5); /* 20px */
+}
+
 /* Game Title */
 .game-title {
     font-family: 'Poppins', sans-serif;
@@ -14,31 +36,6 @@
 #nextWord{
     margin-top: -1em;
     margin-bottom: 1em;
-}
-body {
-    font-family: Verdana, sans-serif;
-    font-size: 1.4em;
-    background-color: #121213; /* Dark background */
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
-
-li {
-    text-transform: uppercase;
-}
-
-.container {
-    width: 90%; /* Scales on smaller screens */
-    max-width: 31.25em; /* Caps size on larger screens (500px / 16) */
-    padding: 1.25em; /* 20px */
-    background-color: #202124; /* Slightly lighter background */
-    border-radius: 0.625em; /* 10px */
-    text-align: center;
-    box-shadow: 0 0 1.25em rgba(0, 0, 0, 0.5); /* 20px */
 }
 
 #definition{
@@ -113,7 +110,6 @@ input[type="text"]:focus {
 }
 
 .letter-box {
-    margin-bottom: 1em;
     width: 3.125em; /* 50px */
     height: 3.125em; /* 50px */
     text-align: center;
@@ -150,7 +146,7 @@ input[type="text"]:focus {
 #result span {
     font-size: 1.5em;
     font-weight: bold;
-    color: #6aaa64; /* Example: Green color */
+    color: #ffffff; /* Example: Green color */
 }
 
 /* Instructions */
