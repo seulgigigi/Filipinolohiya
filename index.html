@@ -13,30 +13,34 @@
         body {font-family: "Poppins", sans-serif;}
     </style>
 </head>
-<body>
-    <div class="container">
-        <h2 class="game-title">Word Scramble</h2>   
-        <button id="toggleInstructions" class="toggle-button">?</button>
-        <button id="startGame">Start Game</button>
-        <div id="game" class="hidden">
-            <p id="definition"></p> 
-            <p id="scrambledWord"></p>
-            <input type="text" id="userGuess" placeholder="...">
-            <button id="submitGuess">Submit</button>
-            <div id="result"></div>
+    <body>
+        <div class="container">
+            <h2 class="game-title">Word Scramble</h2>   
+            <button id="toggleInstructions" class="toggle-button">?</button>
+            <button id="startGame">Start Game</button>
+            <div id="game" class="hidden">
+                <p id="roundDisplay">0/20</p> <!-- Round progress display -->
+                <p id="definition"></p> 
+                <p id="scrambledWord"></p>
+                <input type="text" id="userGuess" placeholder="...">
+                <button id="submitGuess">Submit</button>
+                <div id="result"></div>
+            </div>
+            <div id="instructions" class="instructions hidden">
+                <h2>Mga Panuto:</h2>
+                <p>Ayusin ang mga letra para mabuo ang tamang salita.</p>
+                <ul>
+                    <li><span style="color: gray;">Grey</span>: Walang letra sa tamang posisyon.</li>
+                    <li><span style="color: yellow;">Yellow</span>: Letra ay nasa salita ngunit nasa maling pwesto.</li>
+                    <li><span style="color: green;">Green</span>: Letra ay tama at nasa tamang pwesto.</li>
+                </ul>
+            </div>
+            <button id="nextWord" class="hidden">SALITA</button>
+            <button id="buttonPanitikan" class="hidden">PANITIKAN</button>
+            <!-- Back to Main Menu button -->
+            <a href="menu.html" class="back-button">Back to Main Menu</a>
         </div>
-        <div id="instructions" class="instructions hidden">
-            <h2>Mga Panuto:</h2>
-            <p>Ayusin ang mga letra para mabuo ang tamang salita.</p>
-            <ul>
-                <li><span style="color: gray;">Grey</span>: Walang letra sa tamang posisyon.</li>
-                <li><span style="color: yellow;">Yellow</span>: Letra ay nasa salita ngunit nasa maling pwesto.</li>
-                <li><span style="color: green;">Green</span>: Letra ay tama at nasa tamang pwesto.</li>
-            </ul>
-        </div>
-        <button id="nextWord" style="display: none;">Next Word</button>
-    </div>
-    
-    <script src="script.js"></script>
-</body>
+        
+        <script src="script.js"></script>
+    </body>
 </html>

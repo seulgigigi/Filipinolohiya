@@ -1,0 +1,73 @@
+/* General container styling */
+.container {
+    text-align: center;
+    padding: 20px;
+    background-color: #f4f4f4; /* Light background for PANITIKAN mode */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Story list styling */
+.story-list {
+    list-style: none;
+    padding: 0;
+}
+
+.story-list li {
+    margin: 10px 0;
+}
+
+.story-list a {
+    text-decoration: none;
+    color: #538d4e;
+    font-size: 1.2em;
+}
+
+.story-list a:hover {
+    color: #6aaa64;
+}
+
+/* Back to Main Menu button */
+.back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #538d4e;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.back-button:hover {
+    background-color: #6aaa64;
+}
+
+/* Assessment form styling */
+form {
+    margin-top: 20px;
+}
+
+form p {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+form input[type="radio"] {
+    margin-right: 10px;
+}
+
+form button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #538d4e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #6aaa64;
+}

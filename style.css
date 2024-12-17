@@ -1,4 +1,22 @@
-/* General body and container */
+.hidden {
+    display: none;
+}
+
+#buttonSalita, #buttonPanitikan {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #538d4e;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+#buttonSalita:hover, #buttonPanitikan:hover {
+    background-color: #6aaa64;
+}
+
 body {
     font-family: Verdana, sans-serif;
     font-size: 1.4em;
@@ -34,7 +52,7 @@ body {
 }
 
 #nextWord{
-    margin-top: -1em;
+    margin-top: -2em;
     margin-bottom: 1em;
 }
 
